@@ -1,0 +1,726 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Моя семья – мой космос</title>
+        <style>
+            /* Общие стили */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Arial', sans-serif;
+            }
+            
+            body {
+                background-color: #ffffff;
+                color: #030000;
+                line-height: 1.6;
+            }
+            
+            a {
+                text-decoration: none;
+                color: #fc86e2;
+            }
+            
+            .container {
+                width: 100%;
+                max-width: 1920px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+            
+            /* Шапка сайта */
+            header {
+                background-color: #a13939;
+                padding: 20px 0;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                box-shadow: 0 2px 10px rgba(187, 39, 39, 0.5);
+            }
+            
+            .header-content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .logo {
+                display: flex;
+                align-items: center;
+            }
+            
+            .logo img {
+                height: 50px;
+                margin-right: 15px;
+            }
+            
+            .logo-text {
+                font-size: 24px;
+                font-weight: bold;
+                color: #fc86cb;
+            }
+            
+            nav ul {
+                display: flex;
+                list-style: none;
+            }
+            
+            nav ul li {
+                margin-left: 25px;
+            }
+            
+            nav ul li a {
+                font-size: 16px;
+                transition: color 0.3s;
+            }
+            
+            nav ul li a:hover {
+                color: #4d2929;
+            }
+            
+            .theme-toggle {
+                background: none;
+                border: none;
+                color: #fc86e2;
+                cursor: pointer;
+                font-size: 16px;
+                margin-left: 25px;
+            }
+            
+          
+            
+            /* Секция авторизации */
+            .auth-section {
+                padding: 60px 0;
+                background-color: #1e1e1e;
+            }
+            
+            .auth-container {
+                max-width: 500px;
+                margin: 0 auto;
+                padding: 30px;
+                border-radius: 10px;
+                background-color: #9c2a2a;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+            
+            .auth-title {
+                text-align: center;
+                margin-bottom: 30px;
+                font-size: 28px;
+                color: #862121;
+            }
+            
+            .auth-form .form-group {
+                margin-bottom: 20px;
+            }
+            
+            .auth-form label {
+                display: block;
+                margin-bottom: 8px;
+                color: #b0b0b0;
+            }
+            
+            .auth-form input {
+                width: 100%;
+                padding: 12px 15px;
+                background-color: #333;
+                border: 1px solid #444;
+                border-radius: 5px;
+                color: #ce5858;
+                font-size: 16px;
+            }
+            
+            .auth-form input:focus {
+                outline: none;
+                border-color: #fc86de;
+            }
+            
+            .auth-actions {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 25px;
+            }
+            
+            .auth-button {
+                background-color: #fc86de;
+                color: #121212;
+                border: none;
+                padding: 12px 25px;
+                border-radius: 5px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            
+            .auth-button:hover {
+                background-color: #ea67c9;
+            }
+            
+            .auth-link {
+                color: #fc86c7;
+                align-self: center;
+            }
+        
+            
+            /* Секция конкурсов */
+            .competitions-section {
+                padding: 60px 0;
+            }
+            
+            .competitions-title {
+                text-align: center;
+                font-size: 32px;
+                margin-bottom: 40px;
+                color: #d15151;
+            }
+            
+            .competitions-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            
+            .competition-card {
+                background-color: #462222;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                transition: transform 0.3s;
+            }
+            
+            .competition-card:hover {
+                transform: translateY(-5px);
+            }
+            
+            .competition-image {
+                height: 200px;
+                background-color: #333;
+                background-size: cover;
+                background-position: center;
+            }
+            
+            .competition-details {
+                padding: 20px;
+            }
+            
+            .competition-name {
+                font-size: 20px;
+                margin-bottom: 10px;
+                color: #692f2f;
+            }
+            
+            .competition-description {
+                color: #292121;
+                margin-bottom: 15px;
+            }
+            
+            .competition-meta {
+                display: flex;
+                justify-content: space-between;
+                color: #c08b8b;
+                margin-bottom: 15px;
+            }
+            
+            .competition-button {
+                display: block;
+                text-align: center;
+                background-color: #fc86cb;
+                color: #121212;
+                padding: 10px;
+                border-radius: 5px;
+                font-weight: bold;
+                transition: background-color 0.3s;
+            }
+            
+            .competition-button:hover {
+                background-color: #ea67b8;
+            }
+            
+           
+            /* Секция отзывов */
+            .reviews-section {
+                padding: 60px 0;
+            }
+            
+            .reviews-title {
+                text-align: center;
+                font-size: 32px;
+                margin-bottom: 40px;
+                color: #794242;
+            }
+            
+            .reviews-slider {
+                position: relative;
+                max-width: 1000px;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            
+            .reviews-track {
+                display: flex;
+                transition: transform 0.5s ease;
+            }
+            
+            .review {
+                min-width: 100%;
+                padding: 0 20px;
+            }
+            
+            .review-content {
+                background-color: #1e1e1e;
+                border-radius: 10px;
+                padding: 30px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+            
+            .review-header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            
+            .review-avatar {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background-color: #333;
+                margin-right: 20px;
+                background-size: cover;
+                background-position: center;
+            }
+            
+            .review-author {
+                font-size: 20px;
+                color: #965555;
+            }
+            
+            .review-date {
+                color: #632222;
+                font-size: 14px;
+                margin-top: 5px;
+            }
+            
+            .review-text {
+                color: #b46060;
+                margin-bottom: 20px;
+                font-style: italic;
+            }
+            
+            .review-link {
+                display: inline-block;
+                color: #fc86fc;
+            }
+            
+            .reviews-dots {
+                display: flex;
+                justify-content: center;
+                margin-top: 30px;
+            }
+            
+            .reviews-dot {
+                width: 12px;
+                height: 12px;
+                background-color: #333;
+                border-radius: 50%;
+                margin: 0 5px;
+                cursor: pointer;
+            }
+
+
+.reviews-dot.active {
+                background-color: #fc86cf;
+            }
+            
+            
+            /* Подвал сайта */
+            footer {
+                background-color: #ca1c6d;
+                padding: 60px 0 30px;
+                color: #a53636;
+            }
+            
+            .footer-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+            
+            .footer-logo {
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            
+            .footer-logo img {
+                height: 40px;
+                margin-right: 10px;
+            }
+            
+            .footer-logo-text {
+                font-size: 20px;
+                font-weight: bold;
+                color: #fc86e8;
+            }
+            
+            .footer-contact {
+                margin-bottom: 15px;
+            }
+            
+            .footer-contact a {
+                color: #b0b0b0;
+                transition: color 0.3s;
+            }
+            
+            .footer-contact a:hover {
+                color: #724646;
+            }
+            
+            .footer-links h3 {
+                color: #665151;
+                margin-bottom: 20px;
+                font-size: 18px;
+            }
+            
+            .footer-links ul {
+
+
+list-style: none;
+            }
+            
+            .footer-links li {
+                margin-bottom: 10px;
+            }
+            
+            .footer-links a {
+                color: #b0b0b0;
+                transition: color 0.3s;
+            }
+            
+            .footer-links a:hover {
+                color: #c95656;
+            }
+            
+            .footer-bottom {
+                text-align: center;
+                margin-top: 40px;
+                padding-top: 20px;
+                border-top: 1px solid #333;
+            }
+            
+            @media (max-width: 1200px) {
+                .competitions-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 20px;
+                }
+                
+                .about-container {
+                    flex-direction: column;
+                }
+                
+                .about-image {
+                    margin-right: 0;
+                    margin-bottom: 30px;
+                    width: 100%;
+                }
+            }
+            
+            @media (max-width: 992px) {
+                .footer-container {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+                
+                .greeting-video {
+                    height: 350px;
+                }
+            }
+            
+            @media (max-width: 796px) {
+                
+                .header-content {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                
+                nav ul {
+                    flex-direction: column;
+                    width: 100%;
+                    margin-top: 20px;
+                    display: none;
+                }
+                
+                nav ul.show {
+                    display: flex;
+                }
+                
+                nav ul li {
+                    margin: 10px 0;
+                }
+                
+                .menu-toggle {
+                    display: block;
+                    background: none;
+                    border: none;
+                    color: #fc86cf;
+                    font-size: 24px;
+                    cursor: pointer;
+                    align-self: flex-end;
+                    margin-top: -40px;
+                }
+                
+                .competitions-grid {
+                    grid-template-columns: 1fr;
+                }
+                
+                .about-container {
+                    flex-direction: column;
+                }
+                
+                .about-image {
+                    order: -1;
+                    margin-bottom: 20px;
+                }
+                
+                .footer-container {
+                    grid-template-columns: 1fr;
+                }
+                
+                .slider-controls {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                
+                .auth-actions {
+                    flex-direction: column;
+                }
+                
+                .auth-button {
+                    margin-bottom: 15px;
+                    width: 100%;
+                }
+                
+                .search-form {
+                    flex-direction: column;
+                }
+                
+                .search-input {
+                    border-radius: 5px;
+                    margin-bottom: 10px;
+                }
+                
+                .search-button {
+                    border-radius: 5px;
+                    padding: 15px;
+                    width: 100%;
+                }
+                
+                .greeting-video {
+                    height: 250px;
+                }
+            }
+        </style>
+
+
+</head>
+    <body>
+        <!-- Шапка сайта -->
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <img src="https://www.figma.com/design/H9FSRJSCwUkePnK9KFaxil/Untitled?node-id=0-1&t=agvPtUR4qwByipBw-1" alt="Логотип 'Моя семья – мой космос'">
+                        <span class="logo-text">Моя семья – мой космос</span>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li><a href="#auth">Авторизация</a></li>
+                            <li><a href="Accaunt.html">Личный кабинет</a></li>
+                            <li><button class="theme-toggle"></button></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Слайдер конкурсов -->
+        <section class="slider-section">
+            <div class="container">
+                <h2 class="slider-title">Конкурсы</h2>
+                <div class="slider-container">
+                    <div class="slider">
+                        <div class="slide">
+                            <div class="slide-content">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+<!-- Секция авторизации -->
+        <section class="auth-section" id="auth">
+            <div class="container">
+                <div class="auth-container">
+                    <h2 class="auth-title">Авторизация</h2>
+                    <form class="auth-form">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Введите ваш email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Пароль</label>
+                            <input type="password" id="password" placeholder="Введите ваш пароль">
+                        </div>
+                        <div class="auth-actions">
+                            <button type="submit" class="auth-button">Войти</button>
+                            <a href="#" class="auth-link">Забыли пароль?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Секция конкурсов -->
+        <section class="competitions-section" id="competitions">
+            <div class="container">
+                <h2 class="competitions-title">Наши конкурсы</h2>
+                <div class="competitions-grid">
+                    <div class="competition-card">
+                        <div class="competition-image" style="background-image: url('https://pin.it/4hgrI2ZuX');"></div>
+                        <div class="competition-details">
+                            <h3 class="competition-name">Космический рисунок</h3>
+                            <p class="competition-description">Нарисуйте космос и выиграйте призы.</p>
+                            <div class="competition-meta">
+                                <span>Участников: 94</span>
+                                <span>Рейтинг: 5.5</span>
+                            </div>
+
+
+<a href="competition.html" class="competition-button">Участвовать</a>
+                        </div>
+                    </div>
+                    <div class="competition-card">
+                        <div class="competition-image" style="background-image: url('https://pin.it/57WWqjwiU');"></div>
+                        <div class="competition-details">
+                            <h3 class="competition-name">Космо олимпиада</h3>
+                            <p class="competition-description">Поучаствуйте в нашей увлекательной викторине, на тему космос.</p>
+                            <div class="competition-meta">
+                                <span>Участников: 107</span>
+                                <span>Рейтинг: 4.9</span>
+                            </div>
+                            <a href="competition.html" class="competition-button">Участвовать</a>
+                        </div>
+                    </div>
+                    <div class="competition-card">
+                        <div class="competition-image" style="background-image: url('https://pin.it/4iXySojHs');"></div>
+                        <div class="competition-details">
+                            <h3 class="competition-name">Я и моя семья</h3>
+                            <p class="competition-description">Нарисуйте свою семью и подучите приз!</p>
+                            <div class="competition-meta">
+                                <span>Участников: 50</span>
+                                <span>Рейтинг: 4.9</span>
+                            </div>
+                            <a href="competition.html" class="competition-button">Участвовать</a>
+                        </div>
+                    </div>
+                    <div class="competition-card">
+                        <div class="competition-image" style="background-image: url('https://pin.it/2nASQF6oR');"></div>
+                        <div class="competition-details">
+                            <h3 class="competition-name">Плането вальс</h3>
+                            <p class="competition-description">Исполните танец на космическом тансполе всей семьей.</p>
+                            <div class="competition-meta">
+                                <span>Участников: 62</span>
+                                <span>Рейтинг: 4.1</span>
+                            </div>
+                            <a href="competition.html" class="competition-button">Участвовать</a>
+                        </div>
+                    </div>
+                    <div class="competition-card">
+                        <div class="competition-image" style="background-image: url('https://pin.it/4zd2wzl52');"></div>
+                        <div class="competition-details">
+                            <h3 class="competition-name">Космический пароль</h3>
+                            <p class="competition-description">Придумайте порой на тему косос, а другие команды должны его отгадать.</p>
+                            <div class="competition-meta">
+                                <span>Участников: 190</span>
+                                <span>Рейтинг: 5.5</span>
+                            </div>
+                            <a href="competition.html" class="competition-button">Участвовать</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <!-- Секция отзывов -->
+        <section class="reviews-section">
+            <div class="container">
+                <h2 class="reviews-title">Отзывы участников</h2>
+                <div class="reviews-slider">
+                    <div class="reviews-track">
+                        <div class="review">
+                            <div class="review-content">
+                                <div class="review-header">
+                                    <div class="review-avatar" style="background-image: url('https://pin.it/31xi0Xa5K');"></div>
+                                    <div>
+                                        <div class="review-author">Семья Соколых</div>
+                                        <div class="review-date">5 июня 2024</div>
+                                    </div>
+                                </div>
+                                <p class="review-text">"Участвовали в конкурсе 'Я и моя семья' всей семьей. Выиграли приз! Все очень понравилось."</p>
+                                
+                            </div>
+                        </div>
+                       
+                        </div>
+                    </div>
+                    
+
+       
+<!-- Подвал сайта -->
+        <footer id="footer">
+            <div class="container">
+                <div class="footer-container">
+                    <div class="footer-about">
+                        <div class="footer-logo">
+                            <img src="https://www.figma.com/design/H9FSRJSCwUkePnK9KFaxil/Untitled?node-id=0-1&t=agvPtUR4qwByipBw-1" alt="Логотип 'Моя семья – мой космос'">
+                            <span class="footer-logo-text">Моя семья – мой космос</span>
+                        </div>
+                        <div class="footer-contact">
+                            Телефон: <a href="tel:+73458135577">+7 (3458) 13-55-77</a>
+                        </div>
+                        <div class="footer-contact">
+                            Email: <a href="mailto:@fami#cosm.ru">@fami#cosm.ru</a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <h3>Навигация</h3>
+                        <ul>
+                            <li><a href="i.html">Главная</a></li>                           
+                            <li><a href="Accaunt.html">Личный кабинет</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links">
+                    
+                        <ul>
+                            <li><a href="sc.html">Расписание</a></li>
+                            <li><a href="#">Политика конфиденциальности</a></li>
+                            <li><a href="#">Пользовательское соглашение</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 "Моя семья – мой космос". Все права защищены.</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
